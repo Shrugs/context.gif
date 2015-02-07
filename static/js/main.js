@@ -25,6 +25,7 @@ $(document).ready(function() {
                     return;
                 }
 
+                $('#text').text(data.keywords);
                 console.log(data.keywords);
 
                 $.ajax({
@@ -85,7 +86,9 @@ function startRecognition(cb) {
         if (!final_transcript) {
             return;
         }
-        startRecognition(cb);
+        setTimeout(function() {
+            startRecognition(cb);
+        }, 500);
     };
     recognition.onresult = function(event) {
         var interim_transcript = '';
